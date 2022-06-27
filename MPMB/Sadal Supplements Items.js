@@ -114,14 +114,15 @@ MagicItemsList["staffofthenecromancer"] = {
         selection: ["blight"],
         firstCol: 4
     }, {
-        name: "5 charges",
+        name: "5 charges; 5th level",
         spells: ["false life"],
         selection: ["false life"],
         firstCol: 5
     }],
     spellChanges: {
         "false life": {
-            description: "I gain 1d4+24 temporary hit points for the duration (the spell is cast at 5th level)",
+            nameShort: "False Life (5th level)",
+            description: "I gain 1d4+24 temporary hit points for the duration",
         }
     }
 }
@@ -130,8 +131,7 @@ MagicItemsList["staffofthejungle"] = {
     source: ["SS", 7],
     type: "staff",
     rarity: "rare",
-    description: "This +2 quarterstaff gives me a +2 bonus on spell attacks. It has 10 charges, regaining 1d6+4 at dawn, 5% chance of losing its magic when its last charge is used. As an action, I can plant it into the ground and expend 1 charge to have it grow into a 60 ft tree, which it remains until I use another action to revert it back.",
-    descriptionFull: "This staff can be wielded as a magic quarterstaff that grants a +2 bonus to attack and damage rolls made with it. While holding it, you have a +2 bonus to spell attack rolls.\n   The staff has 10 charges for the following properties. It regains 1d6+4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff loses its properties and becomes a nonmagical quarterstaff.\n   " + toUni("Spells") + ". You can use an action to expend 1 or more of the staff's charges to cast one of the following spells from it, using your spell save DC: Animal Friendship (1 charge), Awaken (5 charges), Barkskin (2 charges), Locate Animals or Plants (2 charges), Speak with Animals (1 charge), Speak with Plants (3 charges), or Wall of Thorns (6 charges).\n   You can also use an action to cast the Pass Without Trace spell from the staff without using any charges.\n   " + toUni("Tree Form") + ". You can use an action to plant one end of the staff in fertile earth and expend 1 charge to transform the staff into a healthy tree. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius. The tree appears ordinary but radiates a faint aura of transmutation magic if targeted by Detect Magic. While touching the tree and using another action to speak its command word, you return the staff to its normal form. Any creature in the tree falls when it reverts to a staff.",
+    description: "",
     attunement: true,
     weight: 4,
     prerequisite: "Requires attunement by a druid",
@@ -201,7 +201,7 @@ MagicItemsList["staffofthejungle"] = {
 }
 MagicItemsList["gemofunderstanding"] = {
     name: "Gem of Understanding",
-    source: ["SS", 7],
+    source: ["SS", 8],
     type: "wondrous item",
     rarity: "uncommon",
     description: "Once as an action, I can crack the gem open and let it's liquid inside seap into my skin. For one hour I gain proficiency in the gem's language",
@@ -247,5 +247,126 @@ MagicItemsList["gemofunderstanding"] = {
         name: "Black Gem of Understanding",
         sortname: "Gem of Understanding, Black",
         description: "Once as an action, I can crack the gem open and let it's liquid inside seap into my skin. For one hour I gain proficiency in orc.",
+    }
+}
+MagicItemsList["amuletofforesight"] = {
+    name: "Amulet of Foresight",
+    source: ["SS", 9],
+    type: "wondrous item",
+    rarity: "Legendary",
+    description: "Once per year, I can cast Foresight on myself. Requires me to have been attuned to it for at least one month before I can use it and it recharges somewhen in the fall.",
+    attunement: true,
+    weight: 0,
+    action: [
+        ["action", ""]
+    ],
+    usages: 1,
+    recovery: "unknown",
+    spellcastingBonus: [{
+        spells: ["foresight"],
+        selection: ["foresight"],
+    }],
+    spellChanges: {
+        "foresight": {
+            description: "I can't be surprised; adv. on attacks, ability checks, and saves; dis. on attacks vs. me",
+            range: "Self",
+            time: "1 a",
+            changes: 'Only requires an action and can only target self.'
+        }
+    }
+}
+
+MagicItemsList["staff of the specialist"] = {
+    name: "Staff of the Specialist",
+    source: ["SS", 10],
+    type: "staff",
+    rarity: "legendary",
+    description: "",
+    descriptionLong: "",
+    descriptionFull: "",
+    attunement: true,
+    weight: 4,
+    prerequisite: "Requires attunement someone who can cast at least one 5th level spell",
+    prereqeval: function(v) { return v.isSpellcastingClass; },
+    usages: 25,
+    recovery: "dawn",
+    additional: "regains 2d10",
+    weaponsAdd: ["Staff of the Specialist"],
+    weaponOptions: {
+        baseWeapon: "quarterstaff",
+        regExpSearch: /^(?=.*staff)(?=.*specialist).*$/i,
+        name: "Staff of the Specialist",
+        source: ["SS", 10],
+        modifiers: [2, 2]
+    },
+    action: [
+        ["action", " (Retributive Strike)"]
+    ],
+    spellcastingAbility: "class",
+    spellFirstColTitle: "Ch",
+    choices: ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"],
+    "abjuration": {
+        spellcastingBonus: [{
+            name: "Abjuration",
+            spells: ["mage armor", "lesser restoration", "protection from energy", "freedom of movement", "antilife shell"],
+            selection: ["mage armor", "lesser restoration", "protection from energy", "freedom of movement", "antilife shell"],
+            times: 5
+        }]
+    },
+    "conjuration": {
+        spellcastingBonus: [{
+            name: "Conjuration",
+            spells: ["entangle", "web", "sleet storm", "grasping vine", "insect plague"],
+            selection: ["entangle", "web", "sleet storm", "grasping vine", "insect plague"],
+            times: 5
+        }]
+    },
+    "divination": {
+        spellcastingBonus: [{
+            name: "Divination",
+            spells: ["comprehend languages", "find traps", "clairvoyance", "arcane eye", "commune with nature"],
+            selection: ["comprehend languages", "find traps", "clairvoyance", "arcane eye", "commune with nature"],
+            times: 5
+        }]
+    },
+    "enchantment": {
+        spellcastingBonus: [{
+            name: "Enchantment",
+            spells: ["bless", "hold person", "enemies abound", "dominate beast", "modify memory"],
+            selection: ["bless", "hold person", "enemies abound", "dominate beast", "modify memory"],
+            times: 5
+        }]
+    },
+    "evocation": {
+        spellcastingBonus: [{
+            name: "Evocation",
+            spells: ["thunderwave", "darkness", "fireball", "otiluke's resilient sphere", "cone of cold"],
+            selection: ["thunderwave", "darkness", "fireball", "otiluke's resilient sphere", "cone of cold"],
+            times: 5
+        }]
+    },
+    "illusion": {
+        spellcastingBonus: [{
+            name: "Illusion",
+            spells: ["color spray", "nystul's magic aura", "phantom steed", "hallucinatory terrain", "mislead"],
+            selection: ["color spray", "nystul's magic aura", "phantom steed", "hallucinatory terrain", "mislead"],
+            times: 5
+        }]
+    },
+    "necromancy": {
+        spellcastingBonus: [{
+            name: "Necromancy",
+            spells: ["ray of sickness", "gentle repose", "bestow curse", "blight", "contagion"],
+            selection: ["ray of sickness", "gentle repose", "bestow curse", "blight", "contagion"],
+            times: 5
+        }]
+    },
+    "transmutation": {
+        spellcastingBonus: [{
+            name: "Transmutation",
+            spells: ["jump", "magic weapon", "haste", "giant insect", "skill empowerment"],
+            selection: ["jump", "magic weapon", "haste", "giant insect", "skill empowerment"],
+            times: 5
+        }]
     }
 }
