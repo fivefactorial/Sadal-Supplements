@@ -83,7 +83,7 @@ MagicItemsList["staffofthenecromancer"] = {
     source: ["SS", 6],
     type: "staff",
     rarity: "very rare",
-    description: 'aaa',
+    description: 'The staff has 10 Charges, regaining 1d6+4 expended charges at dusk. If I use its last charge, roll a d20. On a 1, it disintigrates. I can use its charges to cast Inflict Wounds (1 ch), Blindness/Deafness (2 ch), Vampiric Touch (3 ch), Blight (4 ch), or False Life (5th-level version, 5 ch) using my spellcasting ability.',
     weight: 4,
     attunement: true,
     dmgres: ["Necrotic"],
