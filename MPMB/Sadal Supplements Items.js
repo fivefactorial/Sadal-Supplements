@@ -1,4 +1,4 @@
-if (sheetVersion < 13001000) { throw "This script was made for a newer version of the sheet. Please use the latest version and try again.\nYou can get the latest version over at www.flapkan.com."; };
+if (sheetVersion < 12001000) { throw "This script was made for a newer version of the sheet. Please use the latest version and try again.\nYou can get the latest version over at www.flapkan.com."; };
 var iFileName = "Sadal Supplements Items.js";
 RequiredSheetVersion("13.1.0");
 
@@ -281,9 +281,9 @@ MagicItemsList["staff of the specialist"] = {
     source: ["SS", 10],
     type: "staff",
     rarity: "legendary",
-    description: "",
-    descriptionLong: "",
-    descriptionFull: "",
+    description: '',
+    descriptionLong: '',
+    descriptionFull: '',
     attunement: true,
     weight: 4,
     prerequisite: "Requires attunement someone who can cast at least one 5th level spell",
@@ -305,68 +305,82 @@ MagicItemsList["staff of the specialist"] = {
     spellcastingAbility: "class",
     spellFirstColTitle: "Ch",
     choices: ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"],
-    "abjuration": {
-        spellcastingBonus: [{
-            name: "Abjuration",
+    "abjuration": staffOfTheSpecialistSpells('abjuration', classes.known),
+    "conjuration": staffOfTheSpecialistSpells('conjuration', classes.known),
+    "divination": staffOfTheSpecialistSpells('divination', classes.known),
+    "enchantment": staffOfTheSpecialistSpells('enchantment', classes.known),
+    "evocation": staffOfTheSpecialistSpells('evocation', classes.known),
+    "illusion": staffOfTheSpecialistSpells('illusion', classes.known),
+    "necromancy": staffOfTheSpecialistSpells('necromancy', classes.known),
+    "transmutation": staffOfTheSpecialistSpells('transmutation', classes.known),
+}
+
+function staffOfTheSpecialistSpells(choice, classes) {
+    var archetype = Object.keys(classes).indexOf('wizard') !== -1 ? classes.wizard.subclass : null;
+    var spells = [];
+    if (choice == 'abjuration' || archetype == 'wizard-abjuration') {
+        spells = spells.concat({
+            name: 'Abjuration',
             spells: ["mage armor", "lesser restoration", "protection from energy", "freedom of movement", "antilife shell"],
             selection: ["mage armor", "lesser restoration", "protection from energy", "freedom of movement", "antilife shell"],
             times: 5
-        }]
-    },
-    "conjuration": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'conjuration' || archetype == 'wizard-conjuration') {
+        spells = spells.concat({
             name: "Conjuration",
             spells: ["entangle", "web", "sleet storm", "grasping vine", "insect plague"],
             selection: ["entangle", "web", "sleet storm", "grasping vine", "insect plague"],
             times: 5
-        }]
-    },
-    "divination": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'divination' || archetype == 'wizard-divination') {
+        spells = spells.concat({
             name: "Divination",
             spells: ["comprehend languages", "find traps", "clairvoyance", "arcane eye", "commune with nature"],
             selection: ["comprehend languages", "find traps", "clairvoyance", "arcane eye", "commune with nature"],
             times: 5
-        }]
-    },
-    "enchantment": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'enchantment' || archetype == 'wizard-enchantment') {
+        spells = spells.concat({
             name: "Enchantment",
             spells: ["bless", "hold person", "enemies abound", "dominate beast", "modify memory"],
             selection: ["bless", "hold person", "enemies abound", "dominate beast", "modify memory"],
             times: 5
-        }]
-    },
-    "evocation": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'evocation' || archetype == 'wizard-evocation') {
+        spells = spells.concat({
             name: "Evocation",
             spells: ["thunderwave", "darkness", "fireball", "otiluke's resilient sphere", "cone of cold"],
             selection: ["thunderwave", "darkness", "fireball", "otiluke's resilient sphere", "cone of cold"],
             times: 5
-        }]
-    },
-    "illusion": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'illusion' || archetype == 'wizard-illusion') {
+        spells = spells.concat({
             name: "Illusion",
             spells: ["color spray", "nystul's magic aura", "phantom steed", "hallucinatory terrain", "mislead"],
             selection: ["color spray", "nystul's magic aura", "phantom steed", "hallucinatory terrain", "mislead"],
             times: 5
-        }]
-    },
-    "necromancy": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'necromancy' || archetype == 'wizard-necromancy') {
+        spells = spells.concat({
             name: "Necromancy",
             spells: ["ray of sickness", "gentle repose", "bestow curse", "blight", "contagion"],
             selection: ["ray of sickness", "gentle repose", "bestow curse", "blight", "contagion"],
             times: 5
-        }]
-    },
-    "transmutation": {
-        spellcastingBonus: [{
+        });
+    }
+    if (choice == 'transmutation' || archetype == 'wizard-transmutation') {
+        spells = spells.concat({
             name: "Transmutation",
             spells: ["jump", "magic weapon", "haste", "giant insect", "skill empowerment"],
             selection: ["jump", "magic weapon", "haste", "giant insect", "skill empowerment"],
             times: 5
-        }]
+        });
     }
+    return { spellcastingBonus: spells };
 }
