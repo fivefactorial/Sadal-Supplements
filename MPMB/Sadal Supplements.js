@@ -7,8 +7,110 @@ SourceList["SS"] = {
     abbreviation: "SS",
     group: "Sadal Supplements",
     campaignSetting: "Sadal",
-    date: "2022/06/28"
+    date: "2023/05/29"
 };
+
+// RACES
+
+RaceList["ihlathian"] = {
+    regExpSearch: /^(?=.*ihlathian).*$/i,
+    name: "Ihlathian",
+    sortname: "Human, Ihlathian",
+    source: ["SS", 0],
+    plural: "Ihlathians",
+    size: 3,
+    speed: {
+        walk: { spd: 30, enc: 20 },
+    },
+    languageProfs: [1, "Common"],
+    improvements: "",
+    scores: [0, 0, 2, 0, 2, 0],
+    trait: "",
+    weaponProfs: [false, false, ["dagger", "yklwa"]],
+    skillstxt: "Choose either Survival or Stealth",
+};
+
+RaceList["lestorian"] = {
+    regExpSearch: /^(?=.*lestorian).*$/i,
+    name: "Lestorian",
+    sortname: "Human, Lestorian",
+    source: ["SS", 0],
+    plural: "Lestorians",
+    size: 3,
+    speed: {
+        walk: { spd: 30, enc: 20 },
+    },
+    languageProfs: [1, "Common"],
+    improvements: "",
+    scores: [0, 0, 0, 0, 0, 0],
+    trait: "",
+    scorestxt: "+2 to any ability score and +1 to any other",
+    skillstxt: "Choose one skill you received from your class or background. You can add double your proficiency bonus to rolls made with that skill.",
+};
+
+RaceList["northener"] = {
+    regExpSearch: /^(?=.*northener).*$/i,
+    name: "Northener",
+    sortname: "Human, Northener",
+    source: ["SS", 0],
+    plural: "Northeners",
+    size: 3,
+    speed: {
+        walk: { spd: 30, enc: 20 },
+    },
+    languageProfs: [1, "Common"],
+    improvements: "",
+    scores: [1, 1, 1, 1, 1, 1],
+    trait: "",
+    toolProfs: [
+        ["Any one tool", 1]
+    ],
+};
+
+RaceList["riverfolk"] = {
+    regExpSearch: /^(?=.*riverfolk).*$/i,
+    name: "Riverfolk",
+    sortname: "Human, Riverfolk",
+    source: ["SS", 0],
+    plural: "Riverfolk",
+    size: 3,
+    speed: {
+        walk: { spd: 30, enc: 20 },
+    },
+    languageProfs: [1, ["Elvish or Dwarvish", 1], "Common"],
+    improvements: "",
+    scores: [0, 0, 0, 0, 0, 0],
+    trait: "",
+    scorestxt: "+2 to any ability score and +1 to any other",
+    toolProfs: ["Vehicles (water)"],
+};
+
+RaceList["stormborn"] = {
+    regExpSearch: /^(?=.*stormborn).*$/i,
+    name: "Stormborn",
+    sortname: "Human, Stormborn",
+    source: ["SS", 0],
+    plural: "Stormborns",
+    size: 3,
+    speed: {
+        walk: { spd: 35, enc: 25 },
+    },
+    languageProfs: [1, "Common"],
+    improvements: "",
+    scores: [0, 0, 0, 0, 0, 0],
+    trait: "",
+    scorestxt: "+3 to Strength or Constitution. This can't put you past 17",
+    skills: ["Survival"],
+};
+
+
+
+
+
+
+
+
+// MAGIC ITEMS
 
 MagicItemsList["necklaceofhiding"] = {
     name: "Necklace of Hiding",
