@@ -7,7 +7,7 @@ SourceList["SS"] = {
     abbreviation: "SS",
     group: "Sadal Supplements",
     campaignSetting: "Sadal",
-    date: "2022/06/28"
+    date: "2022/10/19"
 };
 
 MagicItemsList["frostcleaver"] = {
@@ -26,6 +26,26 @@ MagicItemsList["frostcleaver"] = {
         name: "Frostcleaver",
         source: ["SS", 1],
         description: "Heavy, Two-Handed; Deals an additional 1d6 frost damage.",
+        modifiers: [0, 0]
+    }
+}
+
+MagicItemsList["frostbringer"] = {
+    name: "Frostbringer",
+    source: ["SS", 1],
+    type: "weapon (greataxe)",
+    rarity: "rare",
+    description: 'This magical adamantine greataxe deals an additional 2d6 frost damage and grants immunity to fire damage. Auto crits on objects. Whenever a creature within 5 feet of you hits you with a melee attack, they take 2d8 cold damage from blue flame.',
+    weight: 7,
+    weaponsAdd: ["Frostbringer"],
+    attunement: true,
+    dmgres: ["Fire (immune)"],
+    weaponOptions: {
+        baseWeapon: "greataxe",
+        regExpSearch: /\bfrostbringer\b/i,
+        name: "Frostbringer",
+        source: ["SS", 1],
+        description: "Heavy, Two-Handed; Deals an additional 2d6 frost damage; auto crits objects",
         modifiers: [0, 0]
     }
 }

@@ -7,8 +7,10 @@ SourceList["SS"] = {
     abbreviation: "SS",
     group: "Sadal Supplements",
     campaignSetting: "Sadal",
-    date: "2022/06/28"
+    date: "2022/07/31"
 };
+
+// Magic items
 
 MagicItemsList["necklaceofhiding"] = {
     name: "Necklace of Hiding",
@@ -334,3 +336,70 @@ function staffOfTheSpecialistSpells(choice, classes) {
     }
     return { spellcastingBonus: spells };
 }
+
+MagicItemsList["magical spice box"] = {
+    name: "Magical Spice Box",
+    source: ["SS", 11],
+    type: "wondrous item",
+    rarity: "rare",
+    description: "This Magical Spice Box holds an interdimensional portal to the cooking guild in Springhold.",
+    attunement: false,
+    weight: 0,
+}
+
+MagicItemsList["blade of the black hilt"] = {
+    name: "Blade of the Black Hilt",
+    source: ["SS", 12],
+    type: "weapon (longsword)",
+    rarity: "Legendary",
+    description: "+1 finesse longsword. Telepatich Shield: Can't penetrate your mind. Psychic Power: Use spellslot as action to immune against psychic and sword deals psychic for 1 min. Rage Infusion: Use one round of Psychic power to stay in rage. Magical Infusion: Gain 1 spell slot.",
+    attunement: true,
+    weight: 0,
+    action: [
+        ["action", "Psychic Power"],
+        ["action", "Spreading the Power"]
+    ],
+    weaponsAdd: ["Blade of the Black Hilt", "Blade of the Black Hilt (Curse)"],
+    weaponOptions: [{
+        baseWeapon: "longsword",
+        regExpSearch: /^(?=.*blade)(?=.*black).*$/i,
+        name: "Blade of the Black Hilt",
+        source: ["SS", 12],
+        modifiers: [1, 1],
+        description: "Finesse, Versatile (d10)"
+    }, {
+        baseWeapon: "longsword",
+        regExpSearch: /^(?=.*blade)(?=.*curse).*$/i,
+        name: "Blade of the Black Hilt (Curse)",
+        source: ["SS", 12],
+        modifiers: [1, 1],
+        description: "Finesse, Versatile (d10)"
+    }]
+}
+
+// Feats
+
+FeatsList["sweet talker"] = {
+    name: "Sweet Talker",
+    source: ["SS", 1],
+    description: "",
+    scores: [0, 0, 0, 0, 0, 1],
+    skills: ["Persuasion"],
+    choices: ["Same Sex", "Opposite Sex"],
+    "same sex": {
+        description: "When I perform a charisma (persuasion) check against someone of the same sex, I gain a +5 to the roll.",
+    },
+    "opposite sex": {
+        description: "When I perform a charisma (persuasion) check against someone of the opposite sex, I gain a +5 to the roll.",
+    }
+}
+
+FeatsList["fire of efreeti"] = {
+    name: "Fire of Efreeti",
+    source: ["SS", 1],
+    prerequisite: "Being a Fire Genasi",
+    prereqeval: function(v) { return CurrentRace.known.indexOf('fire genasi') !== -1; },
+    descriptionFull: "You learn to call on hellfire to serve your commands. You gain the following benefits:\n \u2022 Increase your Intelligence or Charisma score by 1, to a maximum of 20.\n \u2022 When you roll fire damage for a spell you cast, you can reroll any roll of 1 on the fire damage dice, but you must use the new roll, even if it is another 1.\n \u2022 Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 fire damage.",
+    description: "When I cast a fire damage spell, I can reroll any 1 on fire damage dice once. I then sheathe myself in flame until my next turn ends. These shed bright light in 30 ft, dim light in 30 ft and cause any within 5 ft that hit me in melee to take 1d4 fire damage. [+1 Int or Cha]",
+    scores: [0, 0, 0, 1, 0, 0],
+};
