@@ -5,9 +5,8 @@ RequiredSheetVersion("13.1.0");
 SourceList["SS"] = {
     name: "Sadal Supplements",
     abbreviation: "SS",
-    group: "Sadal Supplements",
-    campaignSetting: "Sadal",
-    date: "2023/05/29"
+    group: "Sadal Campaign Setting",
+    date: "2023/06/02"
 };
 
 // RACES
@@ -104,11 +103,90 @@ RaceList["stormborn"] = {
 };
 
 
+RaceList["flametouched"] = {
+    regExpSearch: /^(?=.*flametouched).*$/i,
+    name: "Flametouched dwarf",
+    sortname: "Dwarf, Flametouched",
+    source: ["SS", 0],
+    plural: "Flametouched dwarves",
+    size: 3,
+    speed: {
+        walk: { spd: 25, enc: 25 },
+    },
+    languageProfs: ["Ignan", ["Common, Elvish or Dwarvish", 1]],
+    improvements: "",
+    vision: [
+        ["Darkvision", 60]
+    ],
+    trait: "Flametouched Dwarf (+2 Constitution, +1 Intelligence/Wisdom)\n\nStonecunning:\n   Whenever I make an Intelligence (History) check related to the origin of stonework, I am considered proficient in the History skill and add double my proficiency bonus to the check, instead of my normal proficiency bonus.",
+    savetxt: { text: ["Adv. on saves vs. magic"] },
+    weaponProfs: [false, false, ["battleaxe", "handaxe", "warhammer", "light hammer"]],
+    toolProfs: [
+        ["Smith, brewer, or mason tools", 1]
+    ],
+    dmgres: ["Fire"],
+
+    spellcastingBonus: {
+        name: "Flametouched (level 1)",
+        spells: ["produce flame"],
+        selection: ["produce flame"],
+        firstCol: 'atwill'
+    },
+    features: {
+        "searing smite": {
+            name: "Flametouched (level 3)",
+            limfeaname: "Searing Smite",
+            minlevel: 3,
+            usages: 1,
+            recovery: "long rest",
+            spellcastingBonus: {
+                name: "Flametouched (level 3)",
+                spells: ["searing smite"],
+                selection: ["searing smite"],
+                firstCol: 'oncelr'
+            }
+        },
+        "heat metal": {
+            name: "Flametouched (level 5)",
+            limfeaname: "Heat Metal",
+            minlevel: 5,
+            usages: 1,
+            recovery: "long rest",
+            spellcastingBonus: {
+                name: "Flametouched (level 5)",
+                spells: ["heat metal"],
+                selection: ["heat metal"],
+                firstCol: 'oncelr'
+            }
+        },
+
+    }
+};
+
+AddRacialVariant("flametouched", "int", {
+    regExpSearch: /intelligence/i,
+    name: "Flametouched Dwarf (Intelligence)",
+    trait: "Flametouched Dwarf (+2 Constitution, +1 Intelligence)\n\nStonecunning:\n   Whenever I make an Intelligence (History) check related to the origin of stonework, I am considered proficient in the History skill and add double my proficiency bonus to the check, instead of my normal proficiency bonus.",
+    scores: [0, 0, 2, 1, 0, 0],
+    spellcastingAbility: 4,
+});
+
+AddRacialVariant("flametouched", "wis", {
+    regExpSearch: /wisdom/i,
+    name: "Flametouched Dwarf (Wisdom)",
+    trait: "Flametouched Dwarf (+2 Constitution, +1 Wisdom)\n\nStonecunning:\n   Whenever I make an Intelligence (History) check related to the origin of stonework, I am considered proficient in the History skill and add double my proficiency bonus to the check, instead of my normal proficiency bonus.",
+    scores: [0, 0, 2, 0, 1, 0],
+    spellcastingAbility: 5,
+});
 
 
 
+/*   
 
 
+    
+
+*/
 
 // MAGIC ITEMS
 
